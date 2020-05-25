@@ -1,0 +1,146 @@
+<html lang="en">
+<head>
+  <title>Ajit Yadav Site</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="bootstrap/css/bootstrap.min.js">
+ <link rel="stylesheet" href="bootstrap3.4.1.min.css">
+ <script src="jquery3.4.1.min.js"></script>
+ <script src="bootstrapjs.min.js"></script>
+  <script type = "text/javascript" src = "d3.js.v4.js"></script>
+  <link rel="stylesheet" href="main.css">
+  
+  <!--  the links above this are the links for the various csss used in the index.html this site uses d3js hence there is more links -->
+</head>
+<body>
+
+<div>
+<div id ="left"> 
+<br>
+<p class="Menu">Menu</p>
+<ul class="left-ul">
+  <li class="left-li"><a class="active" href="#home">Home</a></li>
+  <li class="left-li"><a href="http://ec2-3-84-55-197.compute-1.amazonaws.com/FirstWebProject/">Survey form </a></li><!-- link for the survey form-->
+   <li class="left-li"><a href="http://35.186.164.189/">Angular App </a></li><!-- link for the Angular app-->
+  <li class="left-li"><a href="http://ajitdmyadav1.s3-website-us-east-1.amazonaws.com/">Angular App with lamda </a></li>
+  <li class="left-li"><a href="About Site">About Site</a></li>
+  <li class="left-li"><a href="Other">Other</a></li>
+</ul>
+</div>
+<div class="jumbotron text-center" id = "hgt40"  >                  <!-- this uses 2 class for beautification-->
+  <h1>&nbsp &nbsp &nbsp &nbsp Hi, I am Ajit Yadav.</h1>
+  <p>This site is all about me..and made by me..</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+	<div class="col-sm-3 polaroid">
+		<h2>Bio..</h2>
+      <p>I am a certified AWS Cloud Practitioner with more than 2 years of professional experience in Software/Web development,Business Analyst and Data Engineering domain from working in Reliance Industries.</p>
+	 <p> Currently I am specializing in Database Systems and Software Development in Masters of Computer Science at George Mason University and looking for new Opportunities to explore.
+</p>
+		<!-- this site is first divided into 4 mojor columns and that is done by css col-sm-4 class of bootstrap-->
+	</div>
+    <div class="col-sm-4 polaroid">
+      <h3>My Achievements..</h3>
+	    <div id="myCarousel" class="carousel slide bgcolour" data-ride="carousel" background-color="C0C0C0">
+			
+			<div class="carousel-inner">                          <!-- this gives the marquee effect-->
+				<div class="item active">
+					<p><b>Professional Achievements:</b></p>
+					<ul>
+						<li>Founded an innovative way to intergrate data from <b>HANA Database</b> to <b>SAP BW Systems</b></li>
+						<li>Was Responsible for handling <b>Analytics Dashboards</b> at Pan India level</li>
+						<li>Created a Script in ABAP Language which&nbsp solved a year long problem</li>
+						<li>Created more than <b>100+ Dashboards</b> on various <b>Data Analytics</b> tools.</li>
+					</ul>
+				</div>
+
+				<div class="item">
+					<p><b> Academic Achievements: </b></p>
+					<ul>
+						<li>Currently GTA for Computer Science Department of George Mason University</li>
+						<li>Published an <b>I.E.E. Research paper</b> on <b>Data Mining Techniques</b></li>
+						<li>Created a Web Based application with <b>Oracle Database</b></li>
+						<li>Created a Web application along with MYSQL Database using <b>PHP,HTML,CSS and SQL</b>.</li>
+					</ul>
+				</div>
+
+				<div class="item">
+					<p><b>Skills:</b></p>                            <!-- here starts the lists-->
+						<ul>
+						<li>Proficient:-<b> C,PHP,HTML/CSS,SQL,AWS,SAP Systems,MS Office,Tableau,Python</b>.</li>
+						<li> Intermediate:-<b>JAVA,NOSQL,MongoDB,Azure,Power BI</b>.</li>
+						<li> Databases:-<b>Oracle,SAP HANA,MYSQL,PostgreSql</b>.</li>
+						<li>Applications:-<b>Amazon Web Services,SAP BW,SAP BO,Ms office</b>.</li>
+						</ul>
+				</div>
+			</div>
+			<br><br>
+			<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+		</div>
+	</div>
+    <div class="col-sm-5 polaroid">
+		<!-- below this the script of d3js because it uses real time csv file for the data extraction and then displays the graph to represent the data-->
+      <h3>My GPA Graph till now..</h3>
+      <div>
+			<svg id="svgcontainer"></svg>
+		</div>
+		<h5>This graph is made on D3.js data visualization platform and is showing real time data of my grades from a CSV file!</h5> 
+    </div>
+  </div>
+</div>
+<div id = "bottom">
+	<p>The layout of this site is made in Bootstrap</p>
+<div>
+<!-- here starts the script-->
+     <script>
+        
+         var margin = {top: 20, right: 20, bottom: 30, left: 50},
+         width = 460 - margin.left - margin.right,
+         height = 250 - margin.top - margin.bottom;
+         
+         var x = d3.scaleTime().range([0, width]);
+         var y = d3.scaleLinear().range([height, 0]);
+         var valueline = d3.line()
+            .x(function(d) { return x(d.year); })
+            .y(function(d) { return y(d.grade); });
+         var svg = d3.select("#svgcontainer")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g").attr("transform",
+               "translate(" + margin.left + "," + margin.top + ")");
+         d3.csv("data.csv", function(error, data) {
+            if (error) throw error;
+            data.forEach(function(d) {
+               d.year = d.year;
+               d.population = +d.grade;
+            });
+
+             x.domain(d3.extent(data, function(d) { return d.year; }));
+            //x.domain([2013,2019]);
+			y.domain([0,4.00]);
+
+            svg.append("path")
+               .data([data])
+               .attr("class", "line")
+               .attr("d", valueline);
+			
+           
+            svg.append("g")
+               .attr("transform", "translate(0," + height + ")")
+               .call(d3.axisBottom(x));
+               //.tickFormat(d3.time.format("%Y"))
+            svg.append("g")
+               .call(d3.axisLeft(y));
+         });
+      </script>
+	  
+	  
+</body>
+</html>

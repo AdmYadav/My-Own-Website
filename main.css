@@ -1,0 +1,93 @@
+#hgt40                   /* for height*/
+{
+height: 40%;
+}
+#hgt10                   /* for height*/
+{
+	height: 10%;
+}
+#hgt30                   /* for height*/
+{
+	height: 30%;
+}
+#left{                        /*aligns everything to left*/
+	position:Fixed;
+	border-radius:25px;
+	background:#4d4d4d;
+	text-align:left;
+	opacity:1;
+	width:6%;
+	height:95%;
+	left:0;
+	top:1;
+	bottom:1;
+}
+
+.line{                         /*attributes for the left*/
+            fill: none;
+            stroke: green;
+            stroke-width: 5px;
+         }
+.Menu{                           /*attributes for the menu for various links in the left*/
+	margin: 0;
+  padding: 14px 16px;
+	display:block;
+	border-radius:25px;
+	background-color:gray;
+	text-align:center;
+}
+.left-ul{                        /*for the links in the left*/
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4d4d4d;
+  color:white;
+}
+.left-li{                          /*for the links in the left*/
+  display: block;
+  border-radius:25px;
+  color: white;
+  text-align: center;
+  padding: 14px 17px;
+  text-decoration: none;
+  
+}
+a {
+	color:white;
+	
+}
+a:hover{
+	color:green;
+}
+.left-li:hover {
+  background-color: #111;
+}
+
+#bottom{                      /*positions the footer in the bottom of the list*/
+
+    position: Fixed; 
+    background:#404040; 
+	text-align:center;
+	opacity: 1;
+    width:100%;
+    bottom:0;
+	color:white;
+}
+.jumbotron {                 /*a bootstrap class with some modification for the index site*/
+    background-image: url("Seaface1.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center-top;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.polaroid {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  height:relative;
+}
+.bgcolour
+{
+	background-color: Silver;
+}

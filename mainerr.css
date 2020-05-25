@@ -1,0 +1,14 @@
+.jumbotron {
+    background-image: url("Error.png");
+    background-repeat: no-repeat;
+    background-position: center-top;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+div
+{
+top:10;
+height:90%;	
+border-radius:25px;
+}
